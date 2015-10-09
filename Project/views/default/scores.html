@@ -1,0 +1,49 @@
+<html>
+<link href='http://fonts.googleapis.com/css?family=Eater' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
+
+<head>
+	<title>High Scores</title>
+	<style type="text/css">
+		body{
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-position: center;
+			background-size: 1820px 920px;
+		}
+		#high{
+			margin-left: 450px;
+			margin-top: 100px;
+		}
+		#back{
+			position: relative;
+			top:-50px;
+			margin-left: 750px;
+			list-style-type: none;
+		}
+		#content{
+			font-family: 'Eater',cursive;
+			position: relative;
+			left: 580px;
+			font-size: 50px;
+			word-spacing: 100px;
+			letter-spacing: 15px;
+		}
+	</style>
+</head>
+	
+<body background="../static/images/highscores.jpg">
+		<div id="high">
+			<img src="../static/images/title.png"/>	
+		</div>
+		<div id="content">
+			<ol>
+			    {{a=f}}
+			    {{for i in a:}} 
+			    <li>{{=i}}</li>
+			    {{pass}}
+		</ol>
+		</div>
+	<li id="back"><a href="./hunt.html"><img src="../static/images/back.png"alt=""border="0"</li>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+<link href='http://fonts.googleapis.com/css?family=Eater' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
+
+<head>
+	<title>Loading</title>
+	<script type="text/javascript">
+	function init(){
+		setInterval("change()",3000);
+	}
+	function change(){
+		  window.location.assign("./level2.html");
+	}
+	window.onload = init;
+	</script>
+	<style type="text/css">
+		body{
+			background-position: center;
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-size: 1750px 870px;
+		}
+		#load{
+			margin-left: 580px;
+			margin-top: 350px;
+		}
+        #done
+        {
+        	position: absolute;
+        	margin-left: 550px;
+        	margin-top: 140px;
+        	height:150px;
+            width: 270px;
+            font-family: "Eater";
+        }       
+	</style>
+</head>
+<body background = "../static/images/load.jpg">
+	<div id="done" >
+		<p><h2>Get to full screen (F11) for perfect gaming</h2></p>
+	</div>
+			<img id ="load"src="../static/images/load2.gif"/>
+	
+</body>
+</html>

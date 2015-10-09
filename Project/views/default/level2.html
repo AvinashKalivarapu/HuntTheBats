@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Level-1</title>
+<link rel="shortcut icon"href="../static/images/h3.jpg">
+<meta charset="utf-8" />
+<link href='http://fonts.googleapis.com/css?family=Eater' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Freckle+Face' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+var a = null;
+var animate;
+var sc;
+var val;
+var time = 50;
+var cou;
+var stoper;
+var arr;
+var owl1;
+var parrot;
+function initial () {
+	q = document.getElementById('startup');
+	q.style.display = 'block';
+
+}
+function init(){
+	q.style.display = 'none';
+	//wop = getElementsByTagName('body');
+	//wop.style.display = 'block';
+	//alert("LEVEL-1.... kill atleast 10 bats with in 1 minute..");
+	a = document.getElementById('myimg');
+	b = document.getElementById('bow');
+	owl = document.getElementById('ravi');
+	owl.style.position = 'relative';
+	owl.style.top = '-200px';
+	owl1 = document.getElementById('ravi1');
+	owl1.style.position = 'relative';
+	owl1.style.top = '-300px';
+	parrot = document.getElementById('ravi2');
+	parrot.style.top = '-270px';
+	parrot.style.position='relative';
+	att();
+	att_1();
+	att_2();
+	a.style.position = 'relative';
+	a.style.left = '0px';
+	obj1 = document.getElementById('myimg');
+	obj2 = document.getElementById('ravi');
+	obj3 = document.getElementById('ravi1');
+	obj4 = document.getElementById('ravi2');
+	setInterval("touch(obj1, obj2)", 15);
+	setInterval("touch1(obj1, obj3)", 15);
+	setInterval("touch2(obj1, obj4)", 15);
+
+	b.onclick = function(){attack();};
+	arr = document.getElementById('arrows');
+	cou = document.getElementById('bill');
+	stoper = document.getElementById('timer');
+	watch();		
+
+}
+function watch(){
+	stoper.innerHTML = parseInt(stoper.innerHTML) - 1;
+	if(parseInt(stoper.innerHTML) < 1){
+		if(parseInt(scores.innerHTML)<120){
+			//as = document.getElementById('ove');
+			//as.style.display='block';
+			//runajax();
+			window.location.assign("./quit.html");
+
+		}
+		else{
+			//le = document.getElementById("complete");
+			//le.style.display = 'block';
+			//	runajax();
+					  window.location.assign("./com.html");
+
+		}
+	}
+	else{
+		setTimeout(watch, 1000);
+	}
+}
+function attack(){
+	b.src='../static/images/hero2.png';
+	a.style.left = parseInt(a.style.left) + 15 + 'px';
+	if(parseInt(arr.innerHTML) < 2){
+
+		if(parseInt(scores.innerHTML)<120){
+			//as = document.getElementById('ove');
+			//as.style.display='block';
+			//runajax();
+						window.location.assign("./quit.html");
+
+		}
+		else{
+			//le = document.getElementById("complete");
+			//le.style.display = 'block';
+			//	runajax();
+				window.location.assign("./com.html");
+
+		}
+	}
+	if(parseInt(a.style.left) < 1205){
+		animate = setTimeout(attack, 10);
+	}
+	else{
+		a.style.visibility = 'hidden';
+		stop();
+	}	
+}
+
+function att(){
+	owl.style.top = parseInt(owl.style.top) + 5 + 'px';
+	//owl1.style.top = parseInt(owl1.style.top) + 5 + 'px';
+	if(parseInt(owl.style.top) < 600 ){
+		an = setTimeout(att, time);
+	}
+	else{
+		owl.style.visibility = 'hidden';
+		//owl1.style.visibility = 'hidden';
+		stop2();
+		owl.style.top = '-200px';
+		owl.style.visibility = 'visible';
+		//owl1.style.top = '-300px';
+		//owl1.style.visibility = 'visibile';
+		att();
+	}
+}
+
+function att_1(){
+	//owl.style.top = parseInt(owl.style.top) + 5 + 'px';
+	owl1.style.top = parseInt(owl1.style.top) + 5 + 'px';
+	if(parseInt(owl1.style.top) < 600){
+		an1 = setTimeout(att_1, time);
+	}
+	else{
+		//owl.style.visibility = 'hidden';
+		owl1.style.visibility = 'hidden';
+		stop3();
+		owl1.style.top = '-200px';
+		owl1.style.visibility = 'visible';
+		//owl1.style.top = '-300px';
+		//owl1.style.visibility = 'visibile';
+		att_1();
+	}
+}
+function stop(){
+	a.style.visibility = 'visible';
+	clearTimeout(animate);
+	a.style.left = '0px';
+	arr.innerHTML = parseInt(arr.innerHTML) - 1 ;
+	b.src="../static/images/hero.png"
+}
+function stop2(){
+	owl.style.visibility = 'visible';
+	//owl1.style.visibility = 'visible';
+	clearTimeout(an);
+	owl.style.top = '-200px';
+	//owl1.style.top = '-300px';
+}
+
+function stop3(){
+	//owl.style.visibility = 'visible';
+	owl1.style.visibility = 'visible';
+	clearTimeout(an1);
+	//owl.style.top = '-200px';
+	owl1.style.top = '-300px';
+}
+function touch(obj1, obj2){
+
+	t1 = obj1.offsetTop; 
+	l1 = obj1.offsetLeft;
+	t2 = obj2.offsetTop;
+	l2 = obj2.offsetLeft;
+	h2 = obj2.offsetHeight;
+	c21 = t2+(h2/2);
+	w2 = obj2.offsetWidth;
+	c22 =  l2+(w2/2);
+	h1 = obj1.offsetHeight;
+	c11 = t1+(h1/2);
+	w1 = obj1.offsetWidth;
+	c12 =  l1+(w1/2);
+	for(p = 0 ; p <= 25 ; p++)
+	{
+		if((c11 == c21 +p|| c11 == c21-p)){
+			//alert("first cond");
+			//console.log("c12 = ", c12);
+			for(t = 0; t < 20; t++){
+				if(c12 + t == 1270 || c12 - t == 1270 ){
+					//alert("second")
+					data();
+					break;
+				}
+			}
+		}	
+	}
+
+}
+function data(){
+	//alert("Touched");
+	owl.style.visibility = 'hidden';
+	stop2();
+	owl.style.top = '-200px';
+	owl.style.visibility = 'visible';
+	att();
+	sc = document.getElementById('scores');
+	sc.innerHTML = parseInt(sc.innerHTML) + 10 ; 
+	cou.innerHTML = parseInt(cou.innerHTML) + 1;
+}
+
+function touch1(obj1, obj3){
+
+	t9 = obj1.offsetTop; 
+	l9 = obj1.offsetLeft;
+	t3 = obj3.offsetTop;
+	l3 = obj3.offsetLeft;
+	h3 = obj3.offsetHeight;
+	c66 = t3+(h3/2);
+	w3 = obj3.offsetWidth;
+	c44 =  l3+(w3/2);
+	h1 = obj1.offsetHeight;
+	c77 = t9+(h1/2);
+	w1 = obj1.offsetWidth;
+	c88 =  l9+(w1/2);
+	for(p = 0 ; p <= 25 ; p++)
+	{
+		if((c77 == c66 + p || c77 == c66 - p)){
+			//alert("first cond");
+			//console.log("c12 = ", c12);
+			for(t = 0; t < 20; t++){
+				if(c88 + t == c44 || c88 - t == c44 ){
+					//alert("second")
+
+							 data_1();
+					break;
+				}
+			}
+		}	
+	}
+
+}
+function data_1(){
+	//alert("Touched");
+	owl1.style.visibility = 'hidden';
+	stop3();
+	owl1.style.top = '-300px';
+	owl1.style.visibility = 'visible';
+	att_1();
+	sc = document.getElementById('scores');
+	sc.innerHTML = parseInt(sc.innerHTML) + 10 ; 
+	cou.innerHTML = parseInt(cou.innerHTML) + 1;
+}
+function att_2(){
+	//owl.style.top = parseInt(owl.style.top) + 5 + 'px';
+	parrot.style.top = parseInt(parrot.style.top) + 5 + 'px';
+	if(parseInt(parrot.style.top) < 600){
+		an2 = setTimeout(att_2, time);
+	}
+	else{
+		//owl.style.visibility = 'hidden';
+		parrot.style.visibility = 'hidden';
+		stop4();
+		parrot.style.top = '-270px';
+		parrot.style.visibility = 'visible';
+		//owl1.style.top = '-300px';
+		//owl1.style.visibility = 'visibile';
+		att_2();
+	}
+}
+function data_2(){
+	//alert("Touched");
+	parrot.style.visibility = 'hidden';
+	stop4();
+	parrot.style.top = '-270px';
+	parrot.style.visibility = 'visible';
+	att_2();
+	sc = document.getElementById('scores');
+	sc.innerHTML = parseInt(sc.innerHTML) - 5 ; 
+	//cou.innerHTML = parseInt(cou.innerHTML) + 1;
+}
+
+function tinku()
+{
+		  window.location.assign("./hunt.html");
+}
+function avi()
+{
+	      window.location.assign("./level2.html");
+}
+function touch2(obj1, obj4){
+
+	t1 = obj1.offsetTop; 
+	l1 = obj1.offsetLeft;
+	t2 = obj4.offsetTop;
+	l2 = obj4.offsetLeft;
+	h2 = obj4.offsetHeight;
+	c21 = t2+(h2/2);
+	w2 = obj4.offsetWidth;
+	c22 =  l2+(w2/2);
+	h1 = obj1.offsetHeight;
+	c11 = t1+(h1/2);
+	w1 = obj1.offsetWidth;
+	c12 =  l1+(w1/2);
+	for(p = 0 ; p <= 25 ; p++)
+	{
+		if((c11 == c21 + p || c11 == c21 - p)){
+			//alert("first cond");
+			//console.log("c12 = ", c12);
+			for(t = 0; t < 20; t++){
+				if(c12 + t == c22 || c12 - t == c22 ){
+					//alert("second")
+					data_2();
+					break;
+				}
+			}
+		}	
+	}
+
+}
+function stop4(){
+	//owl.style.visibility = 'visible';
+	parrot.style.visibility = 'visible';
+	clearTimeout(an2);
+	//owl.style.top = '-200px';
+	parrot.style.top = '-270px';
+}
+function rot(){
+	po = document.getElementById('myimg');
+	alert("hi");
+}
+window.onload = initial;
+
+//function runajax()
+//{
+//	var xmlhttp = new XMLHttpRequest();
+//	var sc=document.getElementById("scores");
+//	sc=parseInt(sc.innerHTML);
+//	xmlhttp.open("GET","/Project/default/scores?score1=" + sc, true);
+//	xmlhttp.send();
+//}
+</script>
+<style type="text/css">
+body{
+position: relative;
+top:-10px;
+}
+#final{
+position: relative;
+left: 1250px;
+bottom: -400px;
+height: 80px;
+}
+#gr{
+float: right;
+position: relative;
+right: -50px;
+top: 275px;
+
+}
+#startup{
+display: none;
+	 background-color: #000;
+	 font-size: 17px;
+color: #FFF;
+position: absolute;
+left: 500px;
+border: solid;
+	border-radius: 25px;
+width: 400px;
+height: 270px;
+	padding-left: 50px;
+	font-family: 'Eater';
+}
+#myimg{
+
+top:95px;
+opacity: 1;
+
+
+
+transform:rotate(144deg);
+	  -ms-transform:rotate(144deg); /* IE 9 */
+	  -webkit-transform:rotate(144deg);
+}
+#bow{
+top: 178px;
+opacity: 0.6;
+position: relative;
+left: -180px;	
+      background-color: #000;
+} 
+#ravi{     
+float: right; 
+
+} 
+#ravi1{
+float: right;
+position: relative;
+right: 400px;
+}
+#ravi2{
+float: right;
+position: relative;
+right: 500px;
+}
+#scores{
+float: left;  
+position: absolute;
+	  background-color: #000;   
+color: #FFF;    
+height: 20px;    
+width: 60px;
+       border-radius: 17px;  
+       text-align: center;    
+top:30px;    
+left: 11px; 
+}  
+#board{     
+	background-color: #000;   
+color: #FFF;  
+height:50px;    
+width: 80px;    
+       text-align: center;  
+       border-radius: 17px;
+position: absolute; 
+top:20px;
+    font-family: 'Freckle Face'
+} 
+#kill{
+position:relative;
+
+}
+#timer{
+position:relative;
+
+}
+#ash
+{
+position: relative;
+	  margin-top: -200px;
+	  margin-left: 8px;
+	  font-family: 'Freckle Face'
+}
+#arrows{
+position:relative;
+top:5px;
+}
+#play{
+height: 30px;
+width: 85px;
+position: relative;
+left: 125px;
+      border-radius: 10px;
+top: -25px;
+}
+#ove{
+display: none;
+	 background-color: #000;
+	 font-size: 17px;
+color: #FFF;
+position: absolute;
+left: 500px;
+border: solid;
+	border-radius: 20px;
+width: 270px;
+height: 195px;
+	padding-left: 50px;
+	list-style-type: none;
+	font-family: 'Eater';
+}
+
+div#ove li{ 
+
+width: 125px;
+       text-align: center;
+position: relative;
+	  margin-right: 230px;
+	  margin-left: 100px;
+}
+
+div#ove a { 
+color: #000;  
+       text-decoration: none;
+display: inline-block;
+width: 125px;  
+height: 25px; 
+	line-height: 25px;
+	background-color: #FFF;
+border: 1px solid #CCC;
+	border-radius: 50px;
+	padding-bottom: 4px;
+	margin-bottom: 6px;
+}
+#NO{
+left: 30px;
+top: -37px;
+position: relative;
+}
+#YES{
+position: relative;
+left: -130px;
+}
+#complete{
+display: none;
+	 background-color: #000;
+	 font-size: 17px;
+color: #FFF;
+position: absolute;
+left: 500px;
+border: solid;
+	border-radius: 20px;
+width: 230px;
+height: 255px;
+	padding-left: 50px;
+	list-style-type: none;
+	font-family: 'Eater';
+}
+
+div#complete li{ 
+
+width: 125px;
+       text-align: center;
+position: relative;
+	  margin-right: 230px;
+	  margin-left: 30px;
+display:inline;
+}
+
+div#complete a { 
+color: #000;  
+       text-decoration: none;
+display: inline-block;
+width: 125px;  
+height: 25px; 
+	line-height: 25px;
+	background-color: #FFF;
+border: 1px solid #CCC;
+	border-radius: 50px;
+	padding-bottom: 4px;
+	margin-bottom: 6px;
+}
+#footer{
+position: relative;
+bottom:-465px;
+width: 800px;
+left: -20px;
+}
+#first{
+height: 80px;
+}
+#toper{
+position: relative;
+top:10px;
+    margin-left: 200px;
+}
+#sec{
+height: 60px;
+	margin-left: 50px;
+}
+ul#navmenu li{
+
+width: 125px;
+       text-align: center;
+position:relative; ;
+      margin-left: 50px;
+}
+
+ul#navmenu a {
+color: #FFF;  
+       text-decoration: none;
+display: block;
+width: 155px;  
+height: 25px; 
+	line-height: 25px;
+	background-color: #003300;
+border: 1px solid #CCC;
+	border-radius: 50px;
+	padding-bottom: 4px;
+	margin-bottom: 6px;     
+}
+#mine{
+	position: absolute;
+	margin-top: 200px;
+	float: left;
+	height: 75px;
+	width: 150px;
+}
+#mine-ele
+{
+	background-color: black;
+	color: white;
+	border-radius: 15px;
+	position: relative;
+	height: 25px;
+	font-family: 'Eater';
+	width:100px;
+	text-align: center;
+}
+
+ul#navmenu li:hover > a {
+	background-color:  #009900;
+}
+
+ul#navmenu li:hover a:hover {
+	background-color:  #33FF33;
+}
+</style>
+<div id="toper">
+<img id="sec"src="../static/images/cloud.jpg">
+<img id="sec"src="../static/images/cloud.jpg">
+<img id="sec"src="../static/images/cloud.jpg">
+<img id="sec"src="../static/images/cloud.jpg">
+<img id="sec"src="../static/images/cloud.jpg">
+<img id="sec"src="../static/images/cloud.jpg">
+<img id="sec"src="../static/images/cloud.jpg">
+
+</div>
+</head>
+
+<body>
+<img id ="myimg"src="../static/images/arr.jpg"height="100px"width="150px"/>
+<img id="bow"src="../static/images/hero.png"height='200px'width='150px'/>
+<div id="mine">
+	<button id="mine-ele"onclick="avi()">Restart</button>
+	<button id="mine-ele"onclick="tinku()">Quit</button>
+</div>
+<img id ="ravi"src="../static/images/bat4.gif"height="80px"width="80px"/>
+<img id ="ravi1"src="../static/images/bat4.gif"height="80px"width="80px"/>
+<img id ="ravi2"src="../static/images/bird8.gif"height="80px"width="80px"/>
+<img id="gr"src="../static/images/ghost.jpg"height="400px"
+width="300px">
+<div id="board">
+<b>Score</b>		
+<div id = "scores">
+0
+</div>
+</div>
+<div id="ash" >
+<div id="kill">
+<b>Count</b>
+<div id="bill">
+0
+</div>
+</div>
+Time Left:<div id="timer">60</div>
+Arrows Left:<div id="arrows">20</div>
+</div>
+<div id="startup">
+<h3>Level-1</h3>
+Score atlest 120 points within 60 seconds..
+<br>
+Don't kill the birds. 
+<br>
+<b>caution:</b>limited number of arrows
+<br>
+<br>
+<button id="play"onclick='init()'>OK</button>
+</div>
+<div id="ove">
+<h3>Game Over...!!!</h3>
+Do you want to play again?
+<br>
+<br>
+<li><a href="./level2.html" id="YES"><b>Yes</b></a></li>
+<li><a href="./hunt.html" id="NO"><b>No</b></a></li>
+</div>
+<div id="complete">
+<h3>Level Completed....</h3>
+<li><a href="./level2.html" id="try"><b>Try Again</b></a></li>
+<li><a href="./level1.html" id="next"><b>Next Level</b></a></li>
+<li><a href="./hunt.html" id="quit"><b>Quit</b></a></li>
+</div>
+
+<div id="footer">
+<img id="first"src="../static/images/tree1.jpg">
+<img id="first"src="../static/images/tree2.jpg">
+<img id="first"src="../static/images/tree3.jpg">
+<img id="first"src="../static/images/tree4.jpg">
+<img id="first"src="../static/images/tree5.jpg">	
+<img id="first"src="../static/images/tree1.jpg">
+<img id="first"src="../static/images/tree2.jpg">
+<img id="first"src="../static/images/tree3.jpg">
+<img id="first"src="../static/images/tree4.jpg">
+<img id="first"src="../static/images/tree5.jpg">
+<img id="first"src="../static/images/tree1.jpg">
+<img id="first"src="../static/images/tree3.jpg">		
+</div>
+<!--<img id="final"src="./tree3.jpg">-->
+</body>
+</html>
